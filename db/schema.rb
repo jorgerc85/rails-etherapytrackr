@@ -11,9 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150112215602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "evaluations", force: :cascade do |t|
+    t.text     "notes"
+    t.integer  "test_id"
+    t.integer  "patient_id"
+    t.integer  "therapist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "birthday"
+    t.integer  "weight"
+    t.integer  "height"
+    t.string   "gender"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "therapist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "therapists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "profession"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
