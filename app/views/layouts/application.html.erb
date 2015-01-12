@@ -27,11 +27,11 @@
         <% else %>
           <div class='login'>
             <h3>Login</h3>
-            <form action='/therapist/login' method='POST'>
-              <input type='email' name='therapist[email]' placeholder='Email' required>
-              <input type='password' name='therapist[password]' placeholder='Password' required>
-              <input type='submit' value='Login'>
-            </form>
+            <%= form_tag("/login", method: "GET") do %>
+              <%= email_field('therapist', 'email', placeholder: 'Email') %>
+              <%= password_field(:therapist, :password, placeholder: 'Password') %>
+              <%= submit_tag("Login") %>
+            <% end %>
             <h4>- or -</h4>
             <h3>Signup</h3>
             <form action='/therapist/signup' method='POST'>
