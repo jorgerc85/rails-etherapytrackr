@@ -6,9 +6,47 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <div class="wrapper">
+    <body>
+      <%= display_error %>
+      <div id="NavBar">
+        <h1>eTherapyTrackr</h1>
+        <% if current_therapist %>
+          <div class='loggedIn'>
+            <h3>Welcome</h3>
+            <div class='activities'>
+              <h3><a class='regPatient' href='/patients/new'>Register a patient</a></h3>
+              <h3><a class='editPatient' href='/patients'>Update a patient</a></h3>
+              <h3><a class='evalPatient' href='/evaluation/new'>Evaluate a patient</a></h3>
+              <h3><a class='createTest' href='/test/new'>Create a test</a></h3>
+            </div>
+            <div>
+              <h3><a href="/therapist/logout">Logout</a></h3>
+            </div>
+          </div>
+        <% else %>
+          <div class='login'>
+            <h3>Login</h3>
+            <form action='/therapist/login' method='POST'>
+              <input type='email' name='therapist[email]' placeholder='Email' required>
+              <input type='password' name='therapist[password]' placeholder='Password' required>
+              <input type='submit' value='Login'>
+            </form>
+            <h4>- or -</h4>
+            <h3>Signup</h3>
+            <form action='/therapist/signup' method='POST'>
+              <input type='text' name='therapist[name]' placeholder='Name' required>
+              <input type='text' name='therapist[profession]' placeholder='Profession' required>
+              <input type='email' name='therapist[email]' placeholder='Email' required>
+              <input type='password' name='therapist[password]' placeholder='Password' required>
+              <input type='submit' value='Signup'>
+            </form>
+          </div>
+        <% end %>
+      </div>
+      <div id='Main'>
+        <%= yield %>
+      </div>
+    </body>
+  </div>
 </html>
