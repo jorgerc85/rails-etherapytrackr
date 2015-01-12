@@ -15,4 +15,15 @@ class WelcomeController < ApplicationController
     end
     redirect("/")
   end
+
+  def signup
+    therapist = Therapist.new(params[:therapist])
+    if therapist.save
+      session[:therapist_id] = therapist.id
+      redirect("/")
+    else
+      set_error("Failed to signup.")
+      redirect("/")
+    end
+  end
 end

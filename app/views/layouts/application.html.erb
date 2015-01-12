@@ -34,13 +34,13 @@
             <% end %>
             <h4>- or -</h4>
             <h3>Signup</h3>
-            <form action='/therapist/signup' method='POST'>
-              <input type='text' name='therapist[name]' placeholder='Name' required>
-              <input type='text' name='therapist[profession]' placeholder='Profession' required>
-              <input type='email' name='therapist[email]' placeholder='Email' required>
-              <input type='password' name='therapist[password]' placeholder='Password' required>
-              <input type='submit' value='Signup'>
-            </form>
+            <%= form_tag("/signup", method: "POST") do %>
+              <%= text_field('therapist', 'name', placeholder: 'Name') %>
+              <%= text_field('therapist', 'profession', placeholder: 'Profession') %>
+              <%= email_field('therapist', 'email', placeholder: 'Email') %>
+              <%= password_field(:therapist, :password, placeholder: 'Password') %>
+              <%= submit_tag("Signup") %>
+            <% end %>
           </div>
         <% end %>
       </div>
