@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :patients
     resources :therapists
     resources :evaluations
+    resources :tests
 
   # Example resource route with options:
   #   resources :products do
