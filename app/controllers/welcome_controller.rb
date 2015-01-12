@@ -26,4 +26,10 @@ class WelcomeController < ApplicationController
       redirect("/")
     end
   end
+
+  def logout
+    session[:therapist_id] = nil
+    redirect("/")
+  end
+
 end
