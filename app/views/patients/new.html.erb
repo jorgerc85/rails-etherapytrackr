@@ -1,14 +1,16 @@
 <div class="box regPatientBox">
   <h1>Register Patient</h1>
   <p>Please complete this form.</p>
-  <%= form_tag("/patients", method: "post") do %>
-    <%= text_field('patient', 'first_name', placeholder: 'First Name') %>
-    <%= text_field('patient', 'last_name', placeholder: 'Last Name') %>
-    <%= select_tag('patient[gender]', options_for_select(["Gender", "Male", "Female"], disabled: "Gender", selected: 'Gender')) %>
-    <%= text_field('patient', 'birthday', placeholder: 'Birthday') %>
-    <%= text_field('patient', 'weight', placeholder: 'Weight') %>
-    <%= text_field('patient', 'height', placeholder: 'Height') %>
-    <%= email_field('patient', 'email', placeholder: 'Email') %>
-    <%= submit_tag("Register") %>
+
+  <%= form_for :patient do |f| %>
+    <%= f.text_field(:first_name, placeholder: 'First Name') %>
+    <%= f.text_field(:last_name, placeholder: 'Last Name') %>
+    <%= f.select(:gender, options_for_select(["Gender", "Male", "Female"], disabled: "Gender", selected: 'Gender')) %>
+    <%= f.text_field(:birthday, placeholder: 'Birthday') %>
+    <%= f.text_field(:weight, placeholder: 'Weight') %>
+    <%= f.text_field(:height, placeholder: 'Height') %>
+    <%= f.email_field(:email, placeholder: 'Email') %>
+    <%= f.submit "Register" %>
   <% end %>
+
 </div>

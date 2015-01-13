@@ -17,8 +17,7 @@ class PatientsController < ApplicationController
   end
 
   def new
-    therapist = Therapist.find(session[:therapist_id])
-    render :'patients/new'
+
   end
 
   # def show
