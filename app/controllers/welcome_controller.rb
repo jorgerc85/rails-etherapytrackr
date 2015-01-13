@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  helper ErrorHandlingHelper
 
   def index
 
