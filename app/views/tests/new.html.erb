@@ -1,0 +1,16 @@
+<div class="box createTestBox">
+  <h1>New Test</h1>
+  <p>Create a new test using this form. Submit the test's description and its formula to be evaluated and implemented</p>
+  <form class='newTestForm' action='/test' method='POST'>
+    <input type='text' name='test[name]' placeholder='Test Name' required>
+    <textarea class='newTestTextarea' name='test[description]' placeholder='Test description and formula'></textarea>
+    <a class='addComponent' href=''>Add Components</a>
+    <datalist id='componentsList'>
+      <% @components.each do |component| %>
+        <option value="<%= component.name %>">
+      <% end %>
+    </datalist>
+    <input class='newTestComponentText' type="text" list='componentsList' name='components[]' placeholder='Component (Unit)' required>
+    <input class='newTestSubmit' type='submit' value='Create'>
+  </form>
+</div>

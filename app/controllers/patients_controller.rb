@@ -1,6 +1,9 @@
 class PatientsController < ApplicationController
 
   def index
+    therapist = Therapist.find(session[:therapist_id])
+    @patients = therapist.patients.all
+    render :'patients/show'
   end
 
   def create
@@ -15,16 +18,37 @@ class PatientsController < ApplicationController
   end
 
   def new
+    therapist = Therapist.find(session[:therapist_id])
+    render :'patients/new'
   end
 
   # def show
+  #   therapist = Therapist.find(session[:therapist_id])
+  #   patient = therapist.patients.new(params[:patient])
+  #   if patient.save
+  #     redirect_to "/"
+  #   else
+  #     set_error("Failed to register patient.")
+  #     redirect_to "/"
+  #   end
   # end
 
   def edit
+    therapist = Therapist.find(session[:therapist_id])
+    @patient = therapist.patients.find(id)
+    render :'patients/edit'
 
   end
 
   def update
+    patient = Patient.find(params[:patient][:id])
+    patient.update(params[:patient])
+    if patient.save
+      redirect_to "/"
+    else
+      set_error("Failed to update patient.")
+      redirect_to "/"
+    end
   end
 
   def patients_params

@@ -1,0 +1,11 @@
+<div class="box editPatientBox">
+  <h1>Edit Patient Information</h1>
+  <form action="/patients/<%= @patient %>" method='PUT'>
+    <input type='text' name='patient[first_name]' value="<%= @patient.first_name %>" required>
+    <input type='text' name='patient[last_name]' value="<%= @patient.last_name %>" required>
+    <input type='text' name='patient[birthday]' value="<%= @patient.birthday %>" required>
+    <input type='email' name='patient[email]' value="<%= @patient.email %>" required>
+    <input type='hidden' name='patient[id]' value="<%= @patient.id %>" required>
+    <input type='submit' value='Register'>
+  </form>
+</div>

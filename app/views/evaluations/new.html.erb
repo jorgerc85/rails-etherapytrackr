@@ -1,0 +1,37 @@
+<div class="box evalPatientBox">
+  <div class="evalBoxLeftVerticalSub">
+    <h1>New Evaluation</h1>
+    <p>Select a patient to evaluate and the test to be performed.</p>
+    <form action='/evaluation' method='POST'>
+      <select class='patientsList' name='patient[email]'>
+        <option value="" disabled selected>Email Address</option>
+        <% @patients.each do |patient| %>
+          <option value="<%= patient.email %>"><%= patient.email %></option>
+        <% end %>
+      </select>
+      <select class='testsList' name='test[name]'>
+        <option value="" disabled selected>Test Name</option>
+        <% @tests.each do |test| %>
+          <option value="<%= test.name %>"><%= test.name %></option>
+        <% end %>
+      </select>
+      <input class="evalPatientBoxSubmit" type="submit" value='Proceed'>
+    </form>
+    <div class="currentEvalBox">
+      <div class="currentEvalBoxHeader">
+        <h3>Patient Name: <span class="nameSpan"></span></h3>
+        <h3>Test: <span class="testSpan"></span></h3>
+        <h3>Date: <span class="dateSpan"></span></h3>
+      </div>
+      <div class="historyBtnWrapper">
+        <h3><a class="viewHistoryBtn" href="">View Historical Performance</a></h3>
+      </div>
+      <div class="currentEvalFormWrapper">
+        <form class="currentEvalBoxForm" action="/evaluation" method="GET">
+          <input class="currentEvalBoxSubmit" type="submit" value='Calculate'>
+        </form>
+      </div>
+      <div class="currentEvalResultsWrapper"></div>
+    </div>
+  </div>
+</div>
