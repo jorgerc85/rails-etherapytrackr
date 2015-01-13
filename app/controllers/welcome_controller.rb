@@ -11,23 +11,26 @@ class WelcomeController < ApplicationController
     else
       set_error("Email not found or password incorrect.")
     end
-    redirect("/")
   end
 
   def signup
-    therapist = Therapist.new(params[:therapist])
+    therapist = Therapist.new(therapist_params)
     if therapist.save
       session[:therapist_id] = therapist.id
-      redirect("/")
+      redirect_to "/"
     else
       set_error("Failed to signup.")
-      redirect("/")
+      redirect_to "/"
     end
   end
 
   def logout
     session[:therapist_id] = nil
     redirect("/")
+  end
+
+  def therapist_params
+     params.require(:therapist).permit(:name, :profession, :email, :password)
   end
 
 end
