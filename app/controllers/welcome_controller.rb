@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
 
   def logout
     session[:therapist_id] = nil
-    redirect("/")
+    redirect_to "/"
   end
 
   def therapist_params
