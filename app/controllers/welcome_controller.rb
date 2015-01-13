@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
     else
       set_error("Email not found or password incorrect.")
     end
+    redirect_to "/"
   end
 
   def signup
