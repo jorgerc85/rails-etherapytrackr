@@ -1,8 +1,0 @@
-<div class="box selectPatientBox">
-  <h1>Select Patient to Edit</h1>
-    <ul>
-      <% @patients.each do |patient| %>
-        <li><a href='/patients/<%= @patient %>/edit'><%= patient.last_name %> <%= patient.first_name %> | <%= patient.gender %> | <%= patient.email %></a></li>
-      <% end %>
-    </ul>
-</div>

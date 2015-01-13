@@ -2,8 +2,7 @@ class PatientsController < ApplicationController
 
   def index
     therapist = Therapist.find(session[:therapist_id])
-    @patients = therapist.patients.all
-    render :'patients/show'
+    @patients = Patient.all
   end
 
   def create
