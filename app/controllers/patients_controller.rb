@@ -32,10 +32,7 @@ class PatientsController < ApplicationController
   # end
 
   def edit
-    therapist = Therapist.find(session[:therapist_id])
-    @patient = therapist.patients.find(id)
-    render :'patients/edit'
-
+    @patient = Patient.find(params[:id])
   end
 
   def update
