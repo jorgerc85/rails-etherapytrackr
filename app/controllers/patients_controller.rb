@@ -20,17 +20,6 @@ class PatientsController < ApplicationController
 
   end
 
-  # def show
-  #   therapist = Therapist.find(session[:therapist_id])
-  #   patient = therapist.patients.new(params[:patient])
-  #   if patient.save
-  #     redirect_to "/"
-  #   else
-  #     set_error("Failed to register patient.")
-  #     redirect_to "/"
-  #   end
-  # end
-
   def edit
     @patient = Patient.find(params[:id])
   end
