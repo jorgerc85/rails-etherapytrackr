@@ -25,8 +25,8 @@ class PatientsController < ApplicationController
   end
 
   def update
-    patient = Patient.find(params[:patient][:id])
-    patient.update(params[:patient])
+    patient = Patient.find(params[:id])
+    patient.update(patients_params)
     if patient.save
       redirect_to root_path
     else
