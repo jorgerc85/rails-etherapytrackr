@@ -1,16 +1,18 @@
 <div class="box createTestBox">
   <h1>New Test</h1>
   <p>Create a new test using this form. Submit the test's description and its formula to be evaluated and implemented</p>
-  <form class='newTestForm' action='/test' method='POST'>
-    <input type='text' name='test[name]' placeholder='Test Name' required>
-    <textarea class='newTestTextarea' name='test[description]' placeholder='Test description and formula'></textarea>
+
+  <%= form_for :test, url: { action: 'create'}, html: {class: 'newTestForm'} do |f| %>
+    <%= f.text_field(:name, placeholder: "Test Name") %>
+    <%= f.text_area(:description, placeholder: "Description") %>
+      <datalist id='componentsList'>
+        <% @components.each do |component| %>
+          <option value="<%= component.name %>">
+        <% end %>
+      </datalist>
     <a class='addComponent' href=''>Add Components</a>
-    <datalist id='componentsList'>
-      <% @components.each do |component| %>
-        <option value="<%= component.name %>">
-      <% end %>
-    </datalist>
-    <input class='newTestComponentText' type="text" list='componentsList' name='components[]' placeholder='Component (Unit)' required>
-    <input class='newTestSubmit' type='submit' value='Create'>
-  </form>
+    <%= f.text_field(:components, list: "componentsList", placeholder: "Component (Unit)") %>
+    <%= f.submit "Create" %>
+  <% end %>
+
 </div>
