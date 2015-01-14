@@ -10,18 +10,18 @@
     <body>
       <%= display_error %>
       <div id="NavBar">
-        <h1>eTherapyTrackr</h1>
+        <h1><%= link_to 'eTherapyTrackr', root_path %></h1>
         <% if current_therapist %>
           <div class='loggedIn'>
             <h3>Welcome</h3>
             <div class='activities'>
-              <h3><a class='regPatient' href='/patients/new'>Register a patient</a></h3>
-              <h3><a class='editPatient' href='/patients'>Update a patient</a></h3>
-              <h3><a class='evalPatient' href='/evaluation/new'>Evaluate a patient</a></h3>
-              <h3><a class='createTest' href='/test/new'>Create a test</a></h3>
+              <h3><%= link_to "Register a patient", new_patient_path, class: 'regPatient' %></h3>
+              <h3><%= link_to "Update a patient", patients_path, class: 'editPatient' %></h3>
+              <h3><%= link_to "Evaluate a patient", new_evaluation_path, class: 'evalPatient' %></h3>
+              <h3><%= link_to "Create a test", new_test_path, class: 'createTest' %></h3>
             </div>
             <div>
-              <h3><a href="/logout">Logout</a></h3>
+              <h3><%= link_to "Logout", logout_path %></h3>
             </div>
           </div>
         <% else %>
