@@ -2,7 +2,17 @@
   <div class="evalBoxLeftVerticalSub">
     <h1>New Evaluation</h1>
     <p>Select a patient to evaluate and the test to be performed.</p>
-    <form action='/evaluation' method='POST'>
+    <%= form_for :evaluation, url: { action: 'create'}, html: {class: 'patientsList'} do |f| %>
+      <%= f.select(:patient) do %>
+        <%= options_from_collection_for_select(Patient.all, :id, :email) %>
+      <% end %>
+      <%= f.select(:test) do %>
+        <%= options_from_collection_for_select(Test.all, :id, :name) %>
+      <% end %>
+      <%= f.submit "Proceed" %>
+    <% end %>
+
+    <!-- <form action='/evaluation' method='POST'>
       <select class='patientsList' name='patient[email]'>
         <option value="" disabled selected>Email Address</option>
         <% @patients.each do |patient| %>
@@ -16,7 +26,8 @@
         <% end %>
       </select>
       <input class="evalPatientBoxSubmit" type="submit" value='Proceed'>
-    </form>
+    </form> -->
+
     <div class="currentEvalBox">
       <div class="currentEvalBoxHeader">
         <h3>Patient Name: <span class="nameSpan"></span></h3>
