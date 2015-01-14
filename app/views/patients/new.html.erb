@@ -2,7 +2,7 @@
   <h1>Register Patient</h1>
   <p>Please complete this form.</p>
 
-  <%= form_for :patient do |f| %>
+  <%= form_for :patient, url: {action: "create"} do |f| %>
     <%= f.text_field(:first_name, placeholder: 'First Name') %>
     <%= f.text_field(:last_name, placeholder: 'Last Name') %>
     <%= f.select(:gender, options_for_select(["Gender", "Male", "Female"], disabled: "Gender", selected: 'Gender')) %>
