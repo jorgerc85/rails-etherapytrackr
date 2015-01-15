@@ -12,22 +12,6 @@
       <%= f.submit "Proceed" %>
     <% end %>
 
-    <!-- <form action='/evaluation' method='POST'>
-      <select class='patientsList' name='patient[email]'>
-        <option value="" disabled selected>Email Address</option>
-        <% @patients.each do |patient| %>
-          <option value="<%= patient.email %>"><%= patient.email %></option>
-        <% end %>
-      </select>
-      <select class='testsList' name='test[name]'>
-        <option value="" disabled selected>Test Name</option>
-        <% @tests.each do |test| %>
-          <option value="<%= test.name %>"><%= test.name %></option>
-        <% end %>
-      </select>
-      <input class="evalPatientBoxSubmit" type="submit" value='Proceed'>
-    </form> -->
-
     <div class="currentEvalBox">
       <div class="currentEvalBoxHeader">
         <h3>Patient Name: <span class="nameSpan"></span></h3>
