@@ -19,14 +19,17 @@
           <h1><%= link_to 'eTherapyTrackr', root_path %></h1>
         </li>
       </ul>
-      <% if current_therapist %>
       <section class="top-bar-section">
         <ul class="right">
-          <li><%= link_to "Register a patient", new_patient_path, class: 'regPatient' %></li>
-          <li><%= link_to "Update a patient", patients_path, class: 'editPatient' %></li>
-          <li><%= link_to "Evaluate a patient", new_evaluation_path, class: 'evalPatient' %></li>
-          <li><%= link_to "Create a test", new_test_path, class: 'createTest' %></li>
-          <li class="active"><%= link_to "Logout", logout_path %></li>
+          <% if current_therapist %>
+            <li><%= link_to "Register a patient", new_patient_path, class: 'regPatient' %></li>
+            <li><%= link_to "Update a patient", patients_path, class: 'editPatient' %></li>
+            <li><%= link_to "Evaluate a patient", new_evaluation_path, class: 'evalPatient' %></li>
+            <li><%= link_to "Create a test", new_test_path, class: 'createTest' %></li>
+            <li class="active"><%= link_to "Logout", logout_path %></li>
+          <% else %>
+            <li class="active"><%= link_to "Login/Signup", "#", "data-reveal-id" => "accountModal" %></li>
+          <% end %>
         </ul>
       </section>
     </nav>
@@ -36,35 +39,59 @@
         <%= yield %>
       </div>
       <%= javascript_include_tag "application" %>
-
-      <% else %>
-
-    </nav>
-
-    <section role="main" class="scroll-container">
-      <div class="row">
-        <hr>
-        <div class="small-6 small-centered columns panel">
-          <h4 class="text-center">Login</h4>
-          <%= form_tag("/login", method: "GET") do %>
-            <%= email_field('therapist', 'email', placeholder: 'Email') %>
-            <%= password_field(:therapist, :password, placeholder: 'Password') %>
-            <%= submit_tag("Login", class: 'small button') %>
-          <% end %>
-          <hr>
-          <h4 class="text-center">Signup</h4>
-          <%= form_tag("/signup", method: "POST") do %>
-            <%= text_field('therapist', 'name', placeholder: 'Name') %>
-            <%= email_field('therapist', 'email', placeholder: 'Email') %>
-            <%= password_field(:therapist, :password, placeholder: 'Password') %>
-            <%= submit_tag("Signup", class: 'small button') %>
-          <% end %>
-        </div>
-      </div>
-      <%= javascript_include_tag "application" %>
-
-      <% end %>
     </section>
 
   </body>
 </html>
+
+<div id="accountModal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel left-solid">
+        <h4 class="text-center">Login</h4>
+        <%= form_tag("/login", method: "GET") do %>
+          <%= email_field('therapist', 'email', placeholder: 'Email') %>
+          <%= password_field(:therapist, :password, placeholder: 'Password') %>
+          <%= submit_tag("Login", class: 'small button left') %>
+        <% end %>
+        <!-- <p class="welcome">Registered Users</p>
+        <form>
+          <div class="row collapse">
+            <div class="small-2  columns">
+              <span class="prefix"><i class="fi-torso-female"></i></span>
+            </div>
+            <div class="small-10  columns">
+              <input type="text" placeholder="username">
+            </div>
+          </div>
+          <div class="row collapse">
+            <div class="small-2 columns ">
+              <span class="prefix"><i class="fi-lock"></i></span>
+            </div>
+            <div class="small-10 columns ">
+              <input type="text" placeholder="password">
+            </div>
+          </div>
+        </form> -->
+        <!-- <a href="#" class="button ">Log In </a> -->
+      </div>
+    </div>
+
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel newusers">
+        <h4 class="text-center">Signup</h4>
+        <%= form_tag("/signup", method: "POST") do %>
+          <%= text_field('therapist', 'name', placeholder: 'Name') %>
+          <%= email_field('therapist', 'email', placeholder: 'Email') %>
+          <%= password_field(:therapist, :password, placeholder: 'Password') %>
+          <%= submit_tag("Signup", class: 'small button left') %>
+        <% end %>
+        <!-- <p class="welcome"> New User?</p>
+        <p>By creating an account with us, you will be able to move through the checkout process faster, view and track your orders, and more.</p><br>
+        <a href="#" class="button ">Sign Up</a></br> -->
+      </div>
+    </div>
+
+   </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
