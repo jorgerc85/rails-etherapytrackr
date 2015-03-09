@@ -7,7 +7,6 @@ class Therapist < ActiveRecord::Base
                     :format => { :with => /\A.+@.+\..+{2}\z/,
                               :message => "Email address must be valid" }
 
-  has_many :tests
   has_many :patient_therapists
   has_many :patients, through: :patient_therapists
 end

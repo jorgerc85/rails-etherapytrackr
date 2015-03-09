@@ -11,24 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113005005) do
+ActiveRecord::Schema.define(version: 20150309222033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "components", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "evaluation_components", force: :cascade do |t|
-    t.integer  "value"
-    t.integer  "evaluation_id"
-    t.integer  "component_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "evaluations", force: :cascade do |t|
     t.text     "notes"
@@ -37,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150113005005) do
     t.integer  "therapist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "score"
   end
 
   create_table "patient_therapists", force: :cascade do |t|
@@ -58,19 +45,13 @@ ActiveRecord::Schema.define(version: 20150113005005) do
     t.datetime "updated_at"
   end
 
-  create_table "test_components", force: :cascade do |t|
-    t.integer  "test_id"
-    t.integer  "component_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tests", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "therapist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "bottom_limit"
+    t.float    "top_limit"
   end
 
   create_table "therapists", force: :cascade do |t|
