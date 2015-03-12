@@ -1,10 +1,24 @@
-<div class="box createTestBox">
+<div class="row createTestBox">
   <h1>New Test</h1>
-  <p>Create a new test using this form. Submit the test's description and its formula to be evaluated and implemented</p>
+  <p>Submit suggestions for new tests you would like to have implemented using this form.</p>
 
   <%= form_for @test, html: {class: 'newTestForm'} do |f| %>
-    <%= f.text_field(:name, placeholder: "Test Name") %>
-    <%= f.text_area(:description, placeholder: "Description") %>
-    <%= f.submit "Create" %>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Test name", class: "right inline", for: "test[name]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_field(:name, id: "test[name]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Description", class: "right inline", for: "test[description]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_area(:description, id: "test[description]", placeholder: "Description, equation, documentation, etc.") %>
+        <%= f.submit "Submit", class: "small button" %>
+      </div>
+    </div>
   <% end %>
 </div>
