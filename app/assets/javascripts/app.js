@@ -1,20 +1,8 @@
 $(document).ready(function() {
-  activitiesClick();
-  componentAdd();
   pacientEvalCreate();
   graphDisplay();
   calculate();
 });
-
-var activitiesClick = function() {
-  var activities = { '.regPatient': '.regPatientBox', '.editPatient': '.editPatientBox', '.evalPatient': '.evalPatientBox', '.createTest': '.createTestBox'}
-  $.each(activities, function(key, value) {
-    $(key).click(function(event) {
-      // event.preventDefault();
-      $(value).css('display', 'inline-block')
-    });
-  });
-};
 
 var pacientEvalCreate = function() {
   $('.evalPatientBoxSubmit').click(function(event) {
@@ -56,13 +44,6 @@ var graphDisplay = function() {
       $('.graphTitle').html(data.datasets[0].label);
       var myNewChart = new Chart(ctx).Line(data);
     });
-  });
-};
-
-var componentAdd = function() {
-  $('.addComponent').click(function(event) {
-    event.preventDefault();
-    $('.newTestSubmit').before("<input class='newTestComponentText' type='text' list='componentsList' name='components[]' placeholder='Component (Unit)'>")
   });
 };
 

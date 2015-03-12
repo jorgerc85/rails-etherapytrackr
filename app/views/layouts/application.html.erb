@@ -22,10 +22,10 @@
       <section class="top-bar-section">
         <ul class="right">
           <% if current_therapist %>
-            <li><%= link_to "Register a patient", new_patient_path, class: 'regPatient' %></li>
-            <li><%= link_to "Update a patient", patients_path, class: 'editPatient' %></li>
-            <li><%= link_to "Evaluate a patient", new_evaluation_path, class: 'evalPatient' %></li>
-            <li><%= link_to "Create a test", new_test_path, class: 'createTest' %></li>
+            <li><%= link_to "Register a patient", new_patient_path %></li>
+            <li><%= link_to "Update a patient", patients_path %></li>
+            <li><%= link_to "Evaluate a patient", new_evaluation_path %></li>
+            <li><%= link_to "Submit a test", new_test_path %></li>
             <li class="active"><%= link_to "Logout", logout_path %></li>
           <% else %>
             <li class="active"><%= link_to "Login/Signup", "#", "data-reveal-id" => "accountModal" %></li>
