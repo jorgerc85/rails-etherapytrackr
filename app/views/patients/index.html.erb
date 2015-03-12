@@ -1,5 +1,6 @@
 <div class="box selectPatientBox">
-  <h1>Select Patient to Edit</h1>
+  <h1>Update Patient Record</h1>
+  <p>Select a patient to update their information</p>
     <ul>
       <% @patients.each do |patient| %>
         <li><%= link_to patient.last_name + ", " + patient.first_name + " | " + patient.gender + " | " + patient.email, edit_patient_path(patient) %></li>
