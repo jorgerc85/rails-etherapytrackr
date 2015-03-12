@@ -9,10 +9,10 @@ class PatientsController < ApplicationController
     therapist = Therapist.find(session[:therapist_id])
     patient = therapist.patients.new(patients_params)
     if patient.save
-      redirect_to root_path
+      redirect_to patients_path
     else
       set_error("Failed to register patient.")
-      redirect_to root_path
+      redirect_to new_patient_path
     end
   end
 
