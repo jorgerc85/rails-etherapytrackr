@@ -1,15 +1,63 @@
-<div class="box editPatientBox">
+<div class="row editPatientBox">
   <h1>Edit Patient Information</h1>
-
   <%= form_for @patient do |f| %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.select(:gender, options_for_select(["Gender", "Male", "Female"], disabled: "Gender", selected: 'Gender')) %>
-    <%= f.text_field :birthday %>
-    <%= f.text_field :weight %>
-    <%= f.text_field :height %>
-    <%= f.email_field :email %>
-    <%= f.submit "Update" %>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "First name", class: "right inline", for: "patient[first_name]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_field(:first_name, id: "patient[first_name]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Last name", class: "right inline", for: "patient[last_name]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_field(:last_name, id: "patient[last_name]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Gender", class: "right inline", for: "patient[gender]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.select(:gender, options_for_select(["Select", "Male", "Female"], disabled: "Select", selected: 'Select'), id: "patient[gender]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Birthday", class: "right inline", for: "patient[birthday]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.date_field(:birthday, selected: 'Birthday', id: "patient[birthday]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Weight", class: "right inline", for: "patient[weight]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_field(:weight, id: "patient[weight]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Height", class: "right inline", for: "patient[height]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.text_field(:height, id: "patient[height]") %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Email", class: "right inline", for: "patient[email]" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.email_field(:email, id: "patient[email]") %>
+        <%= f.submit "Update", class: "small button" %>
+      </div>
+    </div>
   <% end %>
-
 </div>
+

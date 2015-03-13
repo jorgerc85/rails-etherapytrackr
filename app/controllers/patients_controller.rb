@@ -28,10 +28,10 @@ class PatientsController < ApplicationController
     patient = Patient.find(params[:id])
     patient.update(patients_params)
     if patient.save
-      redirect_to root_path
+      redirect_to patients_path
     else
       set_error("Failed to update patient.")
-      redirect_to root_path
+      redirect_to edit_patient_path(:id)
     end
   end
 
