@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/signup' => 'welcome#signup'
   get '/logout' => 'welcome#logout'
 
+  post '/evaluations/calculate' => 'evaluations#calculate'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

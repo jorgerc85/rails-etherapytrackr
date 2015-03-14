@@ -1,8 +1,6 @@
-<div class="box evalPatientBox">
-  <div class="evalBoxRightVerticalSub">
-    <div class="graphWrapper">
-      <canvas id="myChart" width="517" height="345"></canvas>
-      <h2 class="graphTitle"></h2>
-    </div>
-  </div>
+<div class="row evalPatientBox">
+  <h1><%= @evaluation.test.description %></h1>
+  <h1><%= @evaluation.created_at %></h1>
+  <h1><%= @evaluation.patient.full_name %></h1>
+  <h1><%= @evaluation.score %></h1>
 </div>

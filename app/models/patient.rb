@@ -15,4 +15,14 @@ class Patient < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def calculate!(eval_params)
+    test_name = eval_params.delete('test_name')
+    calculation_params = eval_params.map { |k,v| v.to_f }
+    self.send(test_name.to_sym, calculation_params)
+  end
+
+  def calculate_bmi(calculation_params)
+    (calculation_params[0] / (calculation_params[1] ** 2).to_f * 10000)
+  end
+
 end
