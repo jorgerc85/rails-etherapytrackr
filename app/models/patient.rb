@@ -11,8 +11,8 @@ class Patient < ActiveRecord::Base
   has_many :therapists, through: :patient_therapists
   has_many :evaluations
 
-  def self.calculate_bmi
-    (self.weight / (self.height ** 2).to_f * 10000)
+  def full_name
+    "#{self.first_name} #{self.last_name}"
   end
 
 end
