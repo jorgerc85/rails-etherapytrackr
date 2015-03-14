@@ -1,32 +1,27 @@
-<div class="box evalPatientBox">
-  <div class="evalBoxLeftVerticalSub">
-    <h1>New Evaluation</h1>
-    <p>Select a patient to evaluate and the test to be performed.</p>
-    <%= form_for :evaluation, url: { action: 'create'}, html: {class: 'patientsList'} do |f| %>
-      <%= f.select(:patient) do %>
-        <%= options_from_collection_for_select(Patient.all, :id, :email) %>
-      <% end %>
-      <%= f.select(:test) do %>
-        <%= options_from_collection_for_select(Test.all, :id, :name) %>
-      <% end %>
-      <%= f.submit "Proceed" %>
-    <% end %>
-
-    <div class="currentEvalBox">
-      <div class="currentEvalBoxHeader">
-        <h3>Patient Name: <span class="nameSpan"></span></h3>
-        <h3>Test: <span class="testSpan"></span></h3>
-        <h3>Date: <span class="dateSpan"></span></h3>
+<div class="row evalPatientBox">
+  <h1>New Evaluation</h1>
+  <p>Select a patient to evaluate and the test to be performed.</p>
+  <%= form_for :evaluation, url: { action: 'create'}, html: {class: 'patientsList'} do |f| %>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Patients", class: "right inline", for: "patients" %>
       </div>
-      <div class="historyBtnWrapper">
-        <h3><a class="viewHistoryBtn" href="">View Historical Performance</a></h3>
+      <div class="small-6 columns left">
+        <%= f.select(:patient, [], {}, id: "patients") do %>
+          <%= options_from_collection_for_select(Patient.all, :id, :full_name) %>
+        <% end %>
       </div>
-      <div class="currentEvalFormWrapper">
-        <form class="currentEvalBoxForm" action="/evaluation" method="GET">
-          <input class="currentEvalBoxSubmit" type="submit" value='Calculate'>
-        </form>
-      </div>
-      <div class="currentEvalResultsWrapper"></div>
     </div>
-  </div>
+    <div class="row">
+      <div class="small-2 columns left">
+        <%= f.label "Tests", class: "right inline", for: "tests" %>
+      </div>
+      <div class="small-6 columns left">
+        <%= f.select(:test, [], {}, id: "tests") do %>
+          <%= options_from_collection_for_select(Test.all, :id, :description) %>
+        <% end %>
+        <%= f.submit "Proceed", class: "small button" %>
+      </div>
+    </div>
+  <% end %>
 </div>
