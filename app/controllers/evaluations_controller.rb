@@ -7,11 +7,11 @@ class EvaluationsController < ApplicationController
 
   def create
     patient = Patient.find(params[:evaluation][:patient])
-    test = Test.find_by_name(params[:evaluation][:test])
-    patient.evaluations.create(test: test)
+    test = Test.find(params[:evaluation][:test])
+    evaluation = patient.evaluations.create(test: test, score: 0)
+    render action: "calculator", locals: { test: test, eval_id: evaluation.id }
   end
 
-  def show
 
   end
 

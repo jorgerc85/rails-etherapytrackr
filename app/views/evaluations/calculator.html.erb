@@ -1,0 +1,18 @@
+<div class="row">
+  <h1><%= test.description %></h1>
+  <%= form_for :evaluation, url: { action: 'calculate' } do |f| %>
+    <%= f.hidden_field(:id, :value => eval_id ) %>
+    <%= f.hidden_field(:test_name, :value => test.name ) %>
+    <% test.components.each do |c| %>
+      <div class="row">
+        <div class="small-2 columns left">
+          <%= f.label "#{c.capitalize}", class: "right inline", for: "eval[#{c}]" %>
+        </div>
+        <div class="small-6 columns left">
+          <%= f.text_field("#{c}", id: "eval[#{c}]") %>
+        </div>
+      </div>
+    <% end %>
+    <%= f.submit "Calculate", class: "small button" %>
+  <% end %>
+</div>
