@@ -3,6 +3,7 @@
     <table>
       <tr>
         <th>Name</th>
+        <th>Age</th>
         <th>Gender</th>
         <th>Email</th>
         <th>Update information</th>
@@ -11,6 +12,7 @@
       <% @patients.each do |patient| %>
         <tr>
           <td><%= patient.last_name + ", " + patient.first_name %></td>
+          <td><%= patient.age %></td>
           <td><%= patient.gender %></td>
           <td><%= patient.email %></td>
           <td><%= link_to "Update", edit_patient_path(patient) %></td>

@@ -13,6 +13,16 @@ class Patient < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def age
+    years = Time.now.year - self.birthday.year
+    months = Time.now.month - self.birthday.month
+    if months < 0
+      years -= 1
+      months += 12
+    end
+    "#{years} years and #{months} months"
+  end
+
   def calculate!(eval_params)
     test_name = eval_params.delete('test_name')
     calculation_params = eval_params.map { |k,v| v.to_f }
