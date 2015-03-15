@@ -1,5 +1,10 @@
 class EvaluationsController < ApplicationController
 
+  def index
+    @evaluations = Evaluation.where(patient_id: 2, test_id: 1)
+    @patient = Patient.find(2)
+  end
+
   def new
     @patients = Patient.all
     @tests = Test.all

@@ -1,0 +1,22 @@
+<div class="row">
+  <h1>Evaluation History</h1>
+  <h2><%= @patient.full_name %></h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Score</th>
+    </tr>
+    <% @evaluations.each do |e| %>
+    <tr>
+      <td><%= e.created_at %></td>
+      <td><%= e.score %></td>
+    </tr>
+    <% end %>
+  </table>
+  <div class="evalBoxRightVerticalSub">
+    <div class="graphWrapper">
+      <canvas id="myChart" width="517" height="345"></canvas>
+      <h2 class="graphTitle"></h2>
+    </div>
+  </div>
+</div>
