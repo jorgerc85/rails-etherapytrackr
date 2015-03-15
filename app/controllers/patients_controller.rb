@@ -2,13 +2,14 @@ class PatientsController < ApplicationController
 
   def index
     therapist = Therapist.find(session[:therapist_id])
-    @patients = Patient.all
+    @patients = therapist.patients
   end
 
   def create
     therapist = Therapist.find(session[:therapist_id])
-    patient = therapist.patients.new(patients_params)
+    patient = Patient.new(patients_params)
     if patient.save
+      therapist.patients << patient
       redirect_to patients_path
     else
       set_error("Failed to register patient.")
