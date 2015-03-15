@@ -3,8 +3,6 @@ class Patient < ActiveRecord::Base
   validates :last_name, presence: true
   validates :birthday, presence: true
   validates :gender, presence: true
-  validates :weight, presence: true
-  validates :height, presence: true
   validates :email, uniqueness: true
 
   has_many :patient_therapists
