@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  before_action :is_logged_in?
 
   def new
     @test = Test.new

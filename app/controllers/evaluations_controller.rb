@@ -1,4 +1,5 @@
 class EvaluationsController < ApplicationController
+  before_action :is_logged_in?
 
   def index
     @evaluations = Evaluation.where(patient_id: 2, test_id: 1)

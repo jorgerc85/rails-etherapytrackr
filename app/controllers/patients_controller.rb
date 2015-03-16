@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+  before_action :is_logged_in?
+  before_action :is_their_patient?, only: [:edit, :update]
 
   def index
     therapist = Therapist.find(session[:therapist_id])
