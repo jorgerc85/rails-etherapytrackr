@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def error_check
+    session[:error] != nil
+  end
+
   def display_error
     error = session[:error]
     session[:error] = nil

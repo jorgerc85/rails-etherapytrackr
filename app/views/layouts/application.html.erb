@@ -12,7 +12,12 @@
   </head>
 
   <body>
-    <%= display_error %>
+    <% if error_check %>
+      <div id="mainAlert1" data-alert class="alert-box alert" tabindex="0" aria-live="assertive" role="dialogalert">
+        <%= display_error %>
+        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+      </div>
+    <% end %>
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
