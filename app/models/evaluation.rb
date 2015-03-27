@@ -51,4 +51,8 @@ class Evaluation < ActiveRecord::Base
     }
   end
 
+  def date
+    self.created_at.to_date
+  end
+
 end
