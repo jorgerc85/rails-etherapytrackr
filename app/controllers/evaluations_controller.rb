@@ -4,25 +4,8 @@ class EvaluationsController < ApplicationController
   def index
     @patient = Patient.find(params[:format])
     @evaluations = @patient.evaluations
-    @data = {
-        labels: @evaluations.map { |e| e.created_at },
-        datasets: [
-            {
-                label: "Progress chart",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: @evaluations.map { |e| e.score }
-            }
-        ]
-    }
-    @options = {
-      width: 600,
-      bezierCurve: false
-    }
+    @data = Evaluation.graph_data(@evaluations)
+    @options = Evaluation.graph_options
   end
 
   def new
