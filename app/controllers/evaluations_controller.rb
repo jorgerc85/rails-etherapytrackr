@@ -2,8 +2,27 @@ class EvaluationsController < ApplicationController
   before_action :is_logged_in?
 
   def index
-    @evaluations = Evaluation.where(patient_id: 2, test_id: 1)
-    @patient = Patient.find(2)
+    @patient = Patient.find(params[:format])
+    @evaluations = @patient.evaluations
+    @data = {
+        labels: @evaluations.map { |e| e.created_at },
+        datasets: [
+            {
+                label: "Progress chart",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: @evaluations.map { |e| e.score }
+            }
+        ]
+    }
+    @options = {
+      width: 600,
+      bezierCurve: false
+    }
   end
 
   def new
