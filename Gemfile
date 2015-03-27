@@ -28,6 +28,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'foundation-rails'
 
+gem 'chartjs-ror'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
